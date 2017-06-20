@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="bower_components/ckeditor/ckeditor.js"></script>
+    <script src="js/singleeditor.js"></script>    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Editor</title>
+</head>
+We have to handle the can resize based on element rules.   Need to show inline editor based on "click/blur" logic. This will
+help us in solving the select inside select issue that we are facing.
+
+<body>
+    <div id="div_toolbox">
+        <button id="bold" onclick="javascript:document.execCommand('bold');">B</button>
+        <button id="italics">I</button>
+    </div>
+    <h1>Heading</h1>
+    <div id="html_div_100_0" class="dynCreated selected" data-cs-type="div" data-div-canedit='1' data-div-canmove='1' contenteditable="true">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eos, nemo id eveniet saepe quae sit quia cumque, magnam sunt
+            quos hic obcaecati excepturi culpa, earum temporibus. Commodi recusandae, laboriosam, magnam laborum, magni
+            saepe sunt provident, perferendis voluptas illum fugit dolorem numquam dicta tempore! Totam molestias accusamus,
+            similique hic amet accusantium deleniti molestiae, nesciunt autem voluptatem iste quis.
+        </p>
+    </div>
+
+    
+</body>
+
+</html>

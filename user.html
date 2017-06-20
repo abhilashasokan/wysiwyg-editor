@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Editor</title>
+    <style>
+        .outerbox {
+            width: 750px;
+            border: 1px solid steelblue;
+            position: relative;
+            margin-bottom: 1mm;
+        }
+        .handle, .delete{
+            padding: 3px 3px 0px 3px;
+            border: 1px solid #CCCCCC;
+            margin-right: 2px
+        }    
+        body {
+            padding-left: 50px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+
+            
+
+            $("div.outerbox").click(function (e) {
+                var $this = $(e.currentTarget),
+                    curID = $this.attr('id'),
+                    cstype = $this.attr('data-cs-type');
+                if (cstype === 'div') {
+                    if ($this.attr('data-' + cstype + '-canedit')) {
+                        $this.attr('contenteditable', 'true');
+                    }
+                    if ($this.attr('data-' + cstype + '-canmove')) {
+                        $('<div class="tool-box"><a class="icon-enlarge handle" data-for="'+curID+'">X</a><a class="icon-bin delete" data-remove="<%=id%>">D</a></div>').insertBefore($this);                        
+                    }
+                }
+            });
+
+            $(".outerbox").blur(function(){
+                $('div.tool-box').remove();
+            });
+
+
+           
+        });
+    </script>
+</head>
+ 
+We have to handle the can resize based on element rules.  
+Need to show inline editor based on "click/blur" logic. This will help us in solving the select inside select issue that we are facing. 
+<body>
+    <h1>Heading</h1>
+
+    <div id="html_div_100_0" class="outerbox" data-cs-type="div" data-div-canedit='1' data-div-canmove='1' contenteditable="true">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eos, nemo id eveniet saepe quae sit quia cumque, magnam sunt
+        quos hic obcaecati excepturi culpa, earum temporibus. Commodi recusandae, laboriosam, magnam laborum, magni saepe
+        sunt provident, perferendis voluptas illum fugit dolorem numquam dicta tempore! Totam molestias accusamus, similique
+        hic amet accusantium deleniti molestiae, nesciunt autem voluptatem iste quis.
+    </div>
+
+    <div id="html_div_100_1" class="outerbox" data-cs-type="div" data-div-canedit='1' data-div-canmove='1' contenteditable="true">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eos, nemo id eveniet saepe quae sit quia cumque, magnam sunt
+        quos hic obcaecati excepturi culpa, earum temporibus. Commodi recusandae, laboriosam, magnam laborum, magni saepe
+        sunt provident, perferendis voluptas illum fugit dolorem numquam dicta tempore! Totam molestias accusamus, similique
+        hic amet accusantium deleniti molestiae, nesciunt autem voluptatem iste quis.
+    </div>
+</body>
+
+</html>

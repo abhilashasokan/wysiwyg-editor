@@ -1,0 +1,21 @@
+{
+  "name": "elayout-frontend-revist",
+  "authors": [
+    "Abhilash Asokan <abhilash@heidelsoft-technologies.de>"
+  ],
+  "description": "testing new interface for elayout",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "ckeditor": "^4.7.0"
+  }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="bower_components/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+    <title>Editor</title>
+    <style>
+        .ui-resizable-helper {
+            border: 1px dotted darksalmon;
+        }
+
+        .outerbox {
+            width: 750px;
+            position: relative;
+            margin-bottom: 1mm;
+            outline: none;
+            border: 1px solid rosybrown;
+        }
+
+        p {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .tool-box {
+            width: 100px;
+            margin-bottom: 2px;
+            position: absolute;
+            margin-top: -20px;
+        }
+
+        .handle,
+        .delete {
+            border: 1px solid #CCCCCC;
+            background-color: #ccc;
+            height: 25px;
+            width: 25px;
+        }
+
+        body {
+            padding-left: 50px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+            $("div.outerbox").click(function (e) {
+                console.log("div.outerbox");
+                var $this = $(e.currentTarget),
+                    curID = $this.attr('id'),
+                    cstype = $this.attr('data-cs-type');
+                if (cstype === 'div') {
+                    //Clear any existing toolbox in present layout
+                    $('div.tool-box').remove();
+                    //Add outer container with class "tool-box"
+                    var $tool_box = $('<div/>', {
+                        class: 'tool-box'
+                    }).prependTo($('#' + curID));
+                    //Add handle icons to "tool-box"
+                    var $tool_handle = $('<a/>', {
+                        class: 'icon-move handle',
+                        'data-for': curID
+                    }).appendTo($tool_box);
+                    //Add delete icons to "tool-box"
+                    var $tool_delete = $('<a/>', {
+                        class: 'icon-trash delete',
+                        'data-remove': curID
+                    }).appendTo($tool_box);
+                    initiateEvents(e);
+                    e.preventDefault();
+                }
+            });
+
+            function initiateEvents(e) {
+                var $this = $(e.currentTarget),
+                    curID = $this.attr('id');
+                //Make element as content editable and give it focus
+                $('#' + curID).attr('contenteditable', 'true');
+                $('#' + curID).focus();
+                //Set draggable event
+                $("#" + curID).draggable({
+                    handle: ".handle"
+                });
+               
+                //Check and bind ckeditor instance
+
+                if (CKEDITOR.instances[curID]) {
+                    CKEDITOR.remove(CKEDITOR.instances[curID]);
+                } else {
+                    CKEDITOR.inline(curID);
+                }
+
+                 //Resize the current element
+                $("#" + curID).resizable();
+
+
+
+
+                //Set delete event
+                $("a.delete").click(function (e) {
+                    var $deleteClick = $(e.currentTarget),
+                        curRemoveID = $deleteClick // $(curID).removeAttr('contenteditable');.attr('data-remove');
+                    console.log('We want to remove :' + curRemoveID);
+                });
+            }
+
+            //remove elements when clicked outside of the elements
+            $("div.outerbox").blur(function (e) {
+                console.log("Inside");
+                var $this = $(e.currentTarget),
+                    curID = $this.attr('id');
+                $('.outerbox').removeAttr('contenteditable');
+                $('div.tool-box').remove();
+                try {
+                    $('#' + curID).resizable("destroy");
+                } catch (err) {}
+            });
+
+
+
+        });
+    </script>
+</head>
+We have to handle the can resize based on element rules.   Need to show inline editor based on "click/blur" logic. This will
+help us in solving the select inside select issue that we are facing.
+
+<body>
+    <h1>Heading</h1>
+    
+    <div id="html_div_100_0" class="outerbox" data-cs-type="div" data-div-canedit='1' data-div-canmove='1'>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eos, nemo id eveniet saepe quae sit quia cumque, magnam sunt
+            quos hic obcaecati excepturi culpa, earum temporibus. Commodi recusandae, laboriosam, magnam laborum, magni saepe
+            sunt provident, perferendis voluptas illum fugit dolorem numquam dicta tempore! Totam molestias accusamus, similique
+            hic amet accusantium deleniti molestiae, nesciunt autem voluptatem iste quis.</p>
+            <!--<div id="html_div_100_2" class="outerbox" data-cs-type="div" data-div-canedit='1' data-div-canmove='1'>
+                Ferrari F1
+            </div>-->
+    </div>
+    
+    <div id="html_div_100_1" class="outerbox" data-cs-type="div" data-div-canedit='1' data-div-canmove='1' style="margin-top:35px">
+        <p>
+            <b> ipsum dolor </b> sit amet, consectetur adipisicing elit. Iusto eos, nemo id eveniet saepe quae sit quia cumque,
+            magnam sunt quos hic obcaecati excepturi culpa, earum temporibus. Commodi recusandae, laboriosam, magnam laborum,
+            magni saepe sunt provident, perferendis voluptas illum fugit dolorem numquam dicta tempore! Totam molestias accusamus,
+            similique hic amet accusantium deleniti molestiae, nesciunt autem voluptatem iste quis.
+        </p>
+    </div>
+   
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(66, 194, 217, 0.2);
+}
+
+.ui-resizable-helper {
+    border: 1px dotted #00F;
+}
+
+div:focus,
+span:focus {
+    outline: none;
+}
+
+.ui-resizable-helper {
+    border: 1px dotted darksalmon;
+}
+
+.outerbox {
+    width: 750px;
+    position: relative;
+    margin-bottom: 1mm;
+    outline: none;
+    border: 1px solid red;
+}
+
+.dynCreated {
+    /*border: 1px solid rosybrown;*/
+}
+
+p {
+    padding: 0px;
+    margin: 0px;
+}
+
+.tool-box {
+    width: 100px;
+    margin-bottom: 2px;
+    position: absolute;
+    margin-top: -20px;
+    z-index: 1000;
+}
+
+.handle,
+.delete {
+    border: 1px solid #CCCCCC;
+    background-color: #ccc;
+    height: 25px;
+    width: 25px;
+}
+
+body {
+    padding-left: 50px;
+}
+
+div.cke {
+    margin-left: 40px;
+}
+
+#resizeDiv {
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #CCC;
+    background-color: #FAFAFA;
+    top: 250px;
+}
+
+.resize-handle {
+    background-image: url("https://cdn0.iconfinder.com/data/icons/arrows-02/100/arrow-63-24.png");
+    bottom: -15px;
+    right: -15px;
+    height: 24px;
+    width: 24px;
+    opacity: 0.5;
+}
+
+.tools{
+    cursor: pointer;
+}
