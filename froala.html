@@ -115,15 +115,14 @@
             margin-bottom: 2px;
         }
 
-        .forecolor-available{
+        .forecolor-available {
             width: 200px;
             border: 1px solid red;
             border-radius: 3px;
             margin: 2px;
             border: 1px solid #CCC;
-            padding: 10px 0px 10px 0px; 
+            padding: 10px 0px 10px 0px;
         }
-
     </style>
 </head>
 
@@ -160,8 +159,14 @@
         -->
         <a href="#" data-command='subscript'><i class='fa fa-subscript'></i></a>
         <a href="#" data-command='superscript'><i class='fa fa-superscript'></i></a>
-        
-        
+
+        <select onchange="fontEditor(this[this.selectedIndex].value)">
+            <option value="Arial">Arial</option>
+            <option value="Calibri">Calibri</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+        </select>
+
+
         <div class="forecolor-available">
             <a href="#" data-command="backcolor" data-value="#000000" class="palette-item" style="background-color:#000000;"></a>
             <a href="#" data-command="backcolor" data-value="#FF9966" class="palette-item" style="background-color:#FF9966;"></a>
@@ -199,7 +204,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eos, nemo id eveniet saepe quae sit quia cumque, magnam sunt
                 quos hic obcaecati excepturi culpa, earum temporibus. Commodi recusandae, laboriosam, magnam laborum, magni
                 saepe sunt provident, perferendis voluptas illum fugit dolorem numquam dicta tempore! Totam molestias accusamus,
-                <div id="html_div_100_3" class="dynCreated" data-cs-type="div"forecolor data-div-canedit='1' data-div-canmove='1' contenteditable="true">
+                <div id="html_div_100_3" class="dynCreated" data-cs-type="div" forecolor data-div-canedit='1' data-div-canmove='1' contenteditable="true">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </p>
@@ -225,23 +230,25 @@
     //         '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
     // } 
 
+    function fontEditor(fontName) {
+        document.execCommand("fontName", false, fontName);
+    }
+
     $('.toolbar a').click(function (e) {
         var command = $(this).data('command');
-        if (command == 'forecolor' ) {
+        if (command == 'forecolor') {
             document.execCommand('forecolor', false, $(this).data('value'));
-        }
-        else if(command == 'backcolor'){
+        } else if (command == 'backcolor') {
             document.execCommand('backcolor', false, $(this).data('value'));
-        }
-        else if(command =='undo-backcolor'){
-            document.execCommand("removeFormat", false, "backcolor");
-        }
-        else if(command =='undo-forecolor'){
-            document.execCommand("removeFormat", false, "forecolor");
-        }
-        else document.execCommand($(this).data('command'), false, null);
+        } else if (command == 'undo-backcolor') {
+            //document.execCommand("removeFormat", false, "backcolor");
+            document.execCommand("backcolor", false, "")
+        } else if (command == 'undo-forecolor') {
+            //document.execCommand("removeFormat", false, "forecolor");
+            document.execCommand("forecolor", false, "")
+        } else document.execCommand($(this).data('command'), false, null);
         e.preventDefault();
     });
 </script>
 
-</html> 
+</html>
