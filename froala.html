@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
     <style>
         a {
@@ -114,6 +114,16 @@
             background: #FFF;
             margin-bottom: 2px;
         }
+
+        .forecolor-available{
+            width: 200px;
+            border: 1px solid red;
+            border-radius: 3px;
+            margin: 2px;
+            border: 1px solid #CCC;
+            padding: 10px 0px 10px 0px; 
+        }
+
     </style>
 </head>
 
@@ -122,39 +132,64 @@
     <div class="toolbar">
         <a href="#" data-command='undo'><i class='fa fa-undo'></i></a>
         <a href="#" data-command='redo'><i class='fa fa-repeat'></i></a>
-        <div class="fore-wrapper"><i class='fa fa-font' style='color:#C96;'></i>
+        <!--<div class="fore-wrapper"><i class='fa fa-font' style='color:#C96;'></i>
             <div class="fore-palette">
             </div>
         </div>
         <div class="back-wrapper"><i class='fa fa-font' style='background:#C96;'></i>
             <div class="back-palette">
             </div>
+        </div>-->
+        <a href="#" data-command='bold'><i class='fa fa-bold'></i></a>
+        <a href="#" data-command='italic'><i class='fa fa-italic'></i></a>
+        <a href="#" data-command='underline'><i class='fa fa-underline'></i></a>
+        <a href="#" data-command='strikeThrough'><i class='fa fa-strikethrough'></i></a>
+        <a href="#" data-command='justifyLeft'><i class='fa fa-align-left'></i></a>
+        <a href="#" data-command='justifyCenter'><i class='fa fa-align-center'></i></a>
+        <a href="#" data-command='justifyRight'><i class='fa fa-align-right'></i></a>
+        <a href="#" data-command='justifyFull'><i class='fa fa-align-justify'></i></a>
+        <!--<a href="#" data-command='indent'><i class='fa fa-indent'></i></a>
+        <a href="#" data-command='outdent'><i class='fa fa-outdent'></i></a>-->
+        <!--<a href="#" data-command='insertUnorderedList'><i class='fa fa-list-ul'></i></a>
+        <a href="#" data-command='insertOrderedList'><i class='fa fa-list-ol'></i></a>-->
+        <!--<a href="#" data-command='h1'>H1</a>
+        <a href="#" data-command='h2'>H2</a>
+        <a href="#" data-command='createlink'><i class='fa fa-link'></i></a>
+        <a href="#" data-command='unlink'><i class='fa fa-unlink'></i></a>
+        <a href="#" data-command='insertimage'><i class='fa fa-image'></i></a>
+        -->
+        <a href="#" data-command='subscript'><i class='fa fa-subscript'></i></a>
+        <a href="#" data-command='superscript'><i class='fa fa-superscript'></i></a>
+        
+        
+        <div class="forecolor-available">
+            <a href="#" data-command="backcolor" data-value="#000000" class="palette-item" style="background-color:#000000;"></a>
+            <a href="#" data-command="backcolor" data-value="#FF9966" class="palette-item" style="background-color:#FF9966;"></a>
+            <a href="#" data-command="backcolor" data-value="#6699FF" class="palette-item" style="background-color:#6699FF;"></a>
+            <a href="#" data-command="backcolor" data-value="#99FF66" class="palette-item" style="background-color:#99FF66;"></a>
+            <a href="#" data-command="backcolor" data-value="#CC0000" class="palette-item" style="background-color:#CC0000;"></a>
+            <a href="#" data-command="backcolor" data-value="#00CC00" class="palette-item" style="background-color:#00CC00;"></a>
+            <a href="#" data-command="backcolor" data-value="#0000CC" class="palette-item" style="background-color:#0000CC;"></a>
+            <a href="#" data-command="backcolor" data-value="#333333" class="palette-item" style="background-color:#333333;"></a>
+            <a href="#" data-command="backcolor" data-value="#0066FF" class="palette-item" style="background-color:#0066FF;"></a>
+            <a href="#" data-command="backcolor" data-value="#FFFFFF" class="palette-item" style="background-color:#FFFFFF;"></a>
         </div>
-        <a data-command='bold'><i class='fa fa-bold'></i></a>
-        <a data-command='italic'><i class='fa fa-italic'></i></a>
-        <a data-command='underline'><i class='fa fa-underline'></i></a>
-        <a data-command='strikeThrough'><i class='fa fa-strikethrough'></i></a>
-        <a data-command='justifyLeft'><i class='fa fa-align-left'></i></a>
-        <a data-command='justifyCenter'><i class='fa fa-align-center'></i></a>
-        <a data-command='justifyRight'><i class='fa fa-align-right'></i></a>
-        <a data-command='justifyFull'><i class='fa fa-align-justify'></i></a>
-        <!--<a data-command='indent'><i class='fa fa-indent'></i></a>
-        <a data-command='outdent'><i class='fa fa-outdent'></i></a>-->
-        <!--<a data-command='insertUnorderedList'><i class='fa fa-list-ul'></i></a>
-        <a data-command='insertOrderedList'><i class='fa fa-list-ol'></i></a>-->
-        <!--<a data-command='h1'>H1</a>
-        <a data-command='h2'>H2</a>
-        <a data-command='createlink'><i class='fa fa-link'></i></a>
-        <a data-command='unlink'><i class='fa fa-unlink'></i></a>
-        <a data-command='insertimage'><i class='fa fa-image'></i></a>
-        <a data-command='p'>P</a>-->
-        <a data-command='subscript'><i class='fa fa-subscript'></i></a>
-        <a data-command='superscript'><i class='fa fa-superscript'></i></a>
+
+        <div class="forecolor-available">
+            <a href="#" data-command="forecolor" data-value="#000000" class="palette-item" style="background-color:#000000;"></a>
+            <a href="#" data-command="forecolor" data-value="#FF9966" class="palette-item" style="background-color:#FF9966;"></a>
+            <a href="#" data-command="forecolor" data-value="#6699FF" class="palette-item" style="background-color:#6699FF;"></a>
+            <a href="#" data-command="forecolor" data-value="#99FF66" class="palette-item" style="background-color:#99FF66;"></a>
+            <a href="#" data-command="forecolor" data-value="#CC0000" class="palette-item" style="background-color:#CC0000;"></a>
+            <a href="#" data-command="forecolor" data-value="#00CC00" class="palette-item" style="background-color:#00CC00;"></a>
+            <a href="#" data-command="forecolor" data-value="#0000CC" class="palette-item" style="background-color:#0000CC;"></a>
+            <a href="#" data-command="forecolor" data-value="#333333" class="palette-item" style="background-color:#333333;"></a>
+            <a href="#" data-command="forecolor" data-value="#0066FF" class="palette-item" style="background-color:#0066FF;"></a>
+            <a href="#" data-command="forecolor" data-value="#FFFFFF" class="palette-item" style="background-color:#FFFFFF;"></a>
+        </div>
+
     </div>
     <div id='editor' contenteditable>
-
-
-
 
         <h1>A WYSIWYG Editor.</h1>
         <div id="html_div_100_0" class="dynCreated" data-cs-type="div" data-div-canedit='1' data-div-canmove='1' contenteditable="true">
@@ -162,7 +197,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eos, nemo id eveniet saepe quae sit quia cumque, magnam sunt
                 quos hic obcaecati excepturi culpa, earum temporibus. Commodi recusandae, laboriosam, magnam laborum, magni
                 saepe sunt provident, perferendis voluptas illum fugit dolorem numquam dicta tempore! Totam molestias accusamus,
-                <div id="html_div_100_3" class="dynCreated" data-cs-type="div" data-div-canedit='1' data-div-canmove='1' contenteditable="true">
+                <div id="html_div_100_3" class="dynCreated" data-cs-type="div"forecolor data-div-canedit='1' data-div-canmove='1' contenteditable="true">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </p>
@@ -170,53 +205,35 @@
                 similique hic amet accusantium deleniti molestiae, nesciunt autem voluptatem iste quis.
             </p>
         </div>
-
-
-
-
     </div>
 
 </body>
 
 <script>
-    var colorPalette = ['000000', 'FF9966', '6699FF', '99FF66', 'CC0000', '00CC00', '0000CC', '333333', '0066FF',
-        'FFFFFF'
-    ];
-    var forePalette = $('.fore-palette');
-    var backPalette = $('.back-palette');
+    // var colorPalette = ['000000', 'FF9966', '6699FF', '99FF66', 'CC0000', '00CC00', '0000CC', '333333', '0066FF',
+    //     'FFFFFF'
+    // ];
+    // var forePalette = $('.fore-palette');
+    // var backPalette = $('.back-palette');
 
-    for (var i = 0; i < colorPalette.length; i++) {
-        forePalette.append('<a href="#" data-command="forecolor" data-value="' + '#' + colorPalette[i] +
-            '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
-        backPalette.append('<a href="#" data-command="backcolor" data-value="' + '#' + colorPalette[i] +
-            '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
-    }
+    // for (var i = 0; i < colorPalette.length; i++) {
+    //     forePalette.append('<a href="#" data-command="forecolor" data-value="' + '#' + colorPalette[i] +
+    //         '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
+    //     backPalette.append('<a href="#" data-command="backcolor" data-value="' + '#' + colorPalette[i] +
+    //         '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
+    // } 
 
     $('.toolbar a').click(function (e) {
         var command = $(this).data('command');
-        var isFirefox = typeof InstallTrigger !== 'undefined';
-
-        console.log(isFirefox);
-
-        if (command == 'h1' || command == 'h2' || command == 'p') {
-            document.execCommand('formatBlock', false, command);
+        if (command == 'forecolor' ) {
+            document.execCommand('forecolor', false, $(this).data('value'));
         }
-        if (command == 'forecolor' || command == 'backcolor') {
-            if (isFirefox) {
-                if (command === 'backcolor') {
-                    document.execCommand($(this).data('command'), false, $(this).data('value'));
-                    alert($(this).data('command'));
-                    alert($(this).data('value'));
-                }
-            } else {
-                document.execCommand($(this).data('command'), false, $(this).data('value'));
-            }
+        else if(command == 'backcolor'){
+            document.execCommand('backcolor', false, $(this).data('value'));
         }
-        if (command == 'createlink' || command == 'insertimage') {
-            url = prompt('Enter the link here: ', 'http:\/\/');
-            document.execCommand($(this).data('command'), false, url);
-        } else document.execCommand($(this).data('command'), false, null);
+        else document.execCommand($(this).data('command'), false, null);
+        e.preventDefault();
     });
 </script>
 
-</html>
+</html> 
