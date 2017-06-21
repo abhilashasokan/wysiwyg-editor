@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <title>Document</title>
     <style>
         a {
@@ -173,6 +173,7 @@
             <a href="#" data-command="backcolor" data-value="#333333" class="palette-item" style="background-color:#333333;"></a>
             <a href="#" data-command="backcolor" data-value="#0066FF" class="palette-item" style="background-color:#0066FF;"></a>
             <a href="#" data-command="backcolor" data-value="#FFFFFF" class="palette-item" style="background-color:#FFFFFF;"></a>
+            <a href="#" data-command='undo-backcolor'><i class='fa fa-undo'></i></a>
         </div>
 
         <div class="forecolor-available">
@@ -186,6 +187,7 @@
             <a href="#" data-command="forecolor" data-value="#333333" class="palette-item" style="background-color:#333333;"></a>
             <a href="#" data-command="forecolor" data-value="#0066FF" class="palette-item" style="background-color:#0066FF;"></a>
             <a href="#" data-command="forecolor" data-value="#FFFFFF" class="palette-item" style="background-color:#FFFFFF;"></a>
+            <a href="#" data-command='undo-forecolor'><i class='fa fa-undo'></i></a>
         </div>
 
     </div>
@@ -230,6 +232,12 @@
         }
         else if(command == 'backcolor'){
             document.execCommand('backcolor', false, $(this).data('value'));
+        }
+        else if(command =='undo-backcolor'){
+            document.execCommand("removeFormat", false, "backcolor");
+        }
+        else if(command =='undo-forecolor'){
+            document.execCommand("removeFormat", false, "forecolor");
         }
         else document.execCommand($(this).data('command'), false, null);
         e.preventDefault();
